@@ -11,7 +11,7 @@ public class Gravity : MonoBehaviour {
 		Vector3 toCenter = planet.position - transform.position;
 		toCenter.Normalize();
 		
-		rigidbody.AddForce(toCenter * gravityConstant, ForceMode.Acceleration);
+		GetComponent<Rigidbody>().AddForce(toCenter * gravityConstant, ForceMode.Acceleration);
 		
 		if (AlignToPlanet)
 		{

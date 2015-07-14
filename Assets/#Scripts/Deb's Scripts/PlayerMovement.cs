@@ -95,7 +95,7 @@ public class PlayerMovement : MonoBehaviour {
 
 			Vector3 targetVelocity = ( right * move) * speed;
 			
-			Vector3 velocity = transform.InverseTransformDirection(rigidbody.velocity);
+			Vector3 velocity = transform.InverseTransformDirection(GetComponent<Rigidbody>().velocity);
 			velocity.y = 0;
 			velocity = transform.TransformDirection(velocity);
 			Vector3 velocityChange = transform.InverseTransformDirection(targetVelocity - velocity);
@@ -104,11 +104,11 @@ public class PlayerMovement : MonoBehaviour {
 			velocityChange.y = 0;
 			velocityChange = transform.TransformDirection(velocityChange);
 			
-			rigidbody.AddForce(velocityChange, ForceMode.VelocityChange);
+			GetComponent<Rigidbody>().AddForce(velocityChange, ForceMode.VelocityChange);
 			
 			if (/*Input.GetButtonDown("Player " + playerNum + " Jump")*/jump && grounded)
 			{
-				rigidbody.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
+				GetComponent<Rigidbody>().AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
 			}
 		}
 		else if(!grounded && /*Input.GetButtonDown("Player " + playerNum + " Jump")*/ jump && canDoubleJump){

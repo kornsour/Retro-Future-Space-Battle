@@ -7,7 +7,7 @@ public class OnPlanet : MonoBehaviour {
 
 		if(other.tag == "Player"){
 			Debug.Log ("!");
-			other.rigidbody.isKinematic = true;
+			other.GetComponent<Rigidbody>().isKinematic = true;
 		}
 	}
 }

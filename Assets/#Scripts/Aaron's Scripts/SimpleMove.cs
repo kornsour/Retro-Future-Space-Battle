@@ -35,13 +35,13 @@ public class SimpleMove : MonoBehaviour {
 			direction.Normalize();
 			direction = new Vector3(direction.x, direction.y, 0);
 			//transform.Translate(direction * Time.deltaTime);
-			gameObject.rigidbody.AddForce(direction * 10);
+			gameObject.GetComponent<Rigidbody>().AddForce(direction * 10);
 		}
 		else if(grounded)
 		{
 			if (Input.GetButtonDown("Player " + playerNum + " Jump"))
 			{
-				rigidbody.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
+				GetComponent<Rigidbody>().AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
 				jumping = true;
 			}
 		}

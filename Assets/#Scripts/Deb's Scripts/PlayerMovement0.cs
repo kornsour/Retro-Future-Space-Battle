@@ -41,7 +41,7 @@ public class PlayerMovement0 : MonoBehaviour {
 			Vector3 right = Vector3.Cross(transform.up, LookTransform.forward).normalized;
 			Vector3 targetVelocity = ( right * Input.GetAxis("Player " + playerNum + " Horizontal")) * speed;
 			
-			Vector3 velocity = transform.InverseTransformDirection(rigidbody.velocity);
+			Vector3 velocity = transform.InverseTransformDirection(GetComponent<Rigidbody>().velocity);
 			velocity.y = 0;
 			velocity = transform.TransformDirection(velocity);
 			Vector3 velocityChange = transform.InverseTransformDirection(targetVelocity - velocity);
@@ -50,11 +50,11 @@ public class PlayerMovement0 : MonoBehaviour {
 			velocityChange.y = 0;
 			velocityChange = transform.TransformDirection(velocityChange);
 			
-			rigidbody.AddForce(velocityChange, ForceMode.VelocityChange);
+			GetComponent<Rigidbody>().AddForce(velocityChange, ForceMode.VelocityChange);
 			
 			if (Input.GetButtonDown("Player " + playerNum + " Jump"))
 			{
-				rigidbody.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
+				GetComponent<Rigidbody>().AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
 			}
 		}
 	}
